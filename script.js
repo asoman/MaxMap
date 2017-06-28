@@ -23,7 +23,7 @@ window.onload = function(){
 				//alert("Найдено :" + this.length());
 				map.addOverlay(this.get(0));
 				map.panTo(this.get(0).getGeoPoint());
-				sendAdress(adress, this.get(0).getGeoPoint());
+				sendAdress(this.get(0).text, this.get(0).getGeoPoint());
 			}else {
 				alert("Ничего не найдено")
 			}

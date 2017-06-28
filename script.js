@@ -16,7 +16,6 @@ window.onload = function(){
     })
 	
 	var list = new adressList ();
-	map.addControl(list);
 	
 	document.getElementById('findadress').onclick = function() { 
 		var adress = document.getElementById("adress").value;
@@ -47,38 +46,8 @@ window.onload = function(){
 	}
 		
 	function adressList () {
-
-		// Добавление на карту
-		this.onAddToMap = function (map, position) {
-			this.container = YMaps.jQuery("<ul></ul>")
-			this.map = map;
-			this.position = position || new YMaps.ControlPosition(YMaps.ControlPosition.TOP_RIGHT, new YMaps.Size(10, 10));
-
-			// Выставление необходимых CSS-свойств
-			this.container.css({
-				position: "absolute",
-				zIndex: YMaps.ZIndex.CONTROL,
-				background: '#fff',
-				listStyle: 'none',
-				padding: '10px',
-				margin: 0
-			});
-			
-			// Формирование списка адресов
-			this.generateList();
-			
-			// Применение позиции к управляющему элементу
-			this.position.apply(this.container);
-			
-			// Добавление на карту
-			this.container.appendTo(this.map.getContainer());
-		}
-
-		// Удаление с карты
-		this.onRemoveFromMap = function () {
-			this.container.remove();
-			this.container = this.map = null;
-		};
+		
+		this.container = document.getElementById('list')
 		
 		// Формирование списка адресов
 		this.generateList = function () {
@@ -99,7 +68,7 @@ window.onload = function(){
 				// Создание обработчика щелчка по ссылке
 				li.bind("click", function () {
 					points.remove(obj);
-					_this.container.html("<ul></ul>");
+					_this.container.innerHTML = "<ul></ul>";
 					_this.generateList();
 					return false;
 				});

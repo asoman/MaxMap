@@ -26,9 +26,15 @@ window.onload = function(){
 			if (this.length()) {
 				//alert("Найдено :" + this.length());
 				var point = createPoint(this.get(0));
-				points.add(point);
-				list.addPoint(point);
-				map.addOverlay(points);
+				var isNew = true;
+				points.forEach(function (obj) {if (point.name == obj.name) isNew = false});
+				if(isNew) {
+					points.add(point);
+					list.addPoint(point);
+					map.addOverlay(points);
+				} else {
+					alert("Данный адрес уже в списке");
+				}
 			}else {
 				alert("Ничего не найдено")
 			}

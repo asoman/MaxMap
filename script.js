@@ -25,13 +25,10 @@ window.onload = function(){
 		YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
 			if (this.length()) {
 				//alert("Найдено :" + this.length());
-				points.add(createPoint(this.get(0)));
-				list.generateList();
-				map.addOverlay(points);
-				
-				var test = "";
-				points.forEach(function (obj) { test = test+obj.name;});
-				alert(test);
+				var point = createPoint(this.get(0));
+				points.add(point);
+				list.addPoint(point);
+				map.addOverlay(point);
 			}else {
 				alert("Ничего не найдено")
 			}
@@ -88,8 +85,16 @@ window.onload = function(){
 			var _this = this;
 			// Для каждого объекта вызываем функцию-обработчик
 			points.forEach(function (obj) {
-				// Создание ссылки на объект
-				var li = YMaps.jQuery("<li><a href=\"#\">" + obj.name + "</a></li>"),
+				_this.addPoint(obj);
+				});
+				
+			
+		};
+		
+		this.addPoint = function (obj) {
+			var _this = this;
+			
+			var li = YMaps.jQuery("<li><a href=\"#\">" + obj.name + "</a></li>"),
 					a = li.find("a"); 
 				// Создание обработчика щелчка по ссылке
 				li.bind("click", function () {
@@ -100,8 +105,7 @@ window.onload = function(){
 				
 				// Добавление ссылки на объект в общий список
 				li.appendTo(_this.container);
-			});
-		};
+		}
 		
 	}
 	

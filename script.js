@@ -28,7 +28,7 @@ window.onload = function(){
 				var point = createPoint(this.get(0));
 				points.add(point);
 				list.addPoint(point);
-				map.addOverlay(point);
+				map.addOverlay(points);
 			}else {
 				alert("Ничего не найдено")
 			}
@@ -99,6 +99,7 @@ window.onload = function(){
 				// Создание обработчика щелчка по ссылке
 				li.bind("click", function () {
 					points.remove(obj);
+					_this.container.html("<ul></ul>");
 					_this.generateList();
 					return false;
 				});

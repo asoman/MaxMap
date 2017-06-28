@@ -83,7 +83,6 @@ window.onload = function(){
 		// Формирование списка адресов
 		this.generateList = function () {
 			var _this = this;
-			alert("generate");
 			// Для каждого объекта вызываем функцию-обработчик
 			points.forEach(function (obj) {
 				// Создание ссылки на объект

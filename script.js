@@ -28,6 +28,10 @@ window.onload = function(){
 				points.add(createPoint(this.get(0)));
 				list.generateList();
 				map.addOverlay(points);
+				
+				var test = "";
+				points.forEach(function (obj) { test = test+obj.name;});
+				alert(test);
 			}else {
 				alert("Ничего не найдено")
 			}
@@ -78,8 +82,7 @@ window.onload = function(){
 			this.container.remove();
 			this.container = this.map = null;
 		};
-
-
+		
 		// Формирование списка адресов
 		this.generateList = function () {
 			var _this = this;
@@ -91,7 +94,6 @@ window.onload = function(){
 				// Создание обработчика щелчка по ссылке
 				li.bind("click", function () {
 					points.remove(obj);
-					_this.container = YMaps.jQuery("<ul></ul>");
 					_this.generateList();
 					return false;
 				});

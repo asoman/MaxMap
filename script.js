@@ -23,7 +23,6 @@ window.onload = function(){
 				//alert("Найдено :" + this.length());
 				map.addOverlay(this.get(0));
 				map.panTo(this.get(0).getGeoPoint());
-				sendAdress(this.get(0).text, this.get(0).getGeoPoint());
 			}else {
 				alert("Ничего не найдено")
 			}
@@ -37,26 +36,3 @@ window.onload = function(){
 	
 	
 };
-
-function sendAdress(adress,geopoint)
-{
-	var data = {};
-	data.adress = adress;
-	data.geopoint = geopoint;
-	
-	alert(JSON.stringify(data));
-	
-	/* var xhr = new XMLHttpRequest();
-
-      xhr.open('POST', 'URL', false);
-      xhr.send();
-
-      if (xhr.status != 200) {
-        // обработать ошибку
-        alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
-      } else {
-        // вывести результат
-        alert(xhr.responseText);
-      }
-    }*/
-}

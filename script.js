@@ -13,6 +13,7 @@ window.onload = function(){
             
         // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
         map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
+		map.enableScrollZoom();
     })
 	
 	var list = new adressList ();

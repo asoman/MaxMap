@@ -45,6 +45,14 @@ window.onload = function(){
 		});		
 	}
 	
+	document.getElementById("form").addEventListener('keydown', function(event) {
+		if(event.keyCode == 13) {
+		   event.preventDefault();
+		   document.getElementById('findadress').onclick();
+		}
+	});
+	
+	
 	function createPoint(obj)
 	{
 		var point = new YMaps.Placemark(obj.getGeoPoint());

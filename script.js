@@ -20,6 +20,7 @@ window.onload = function(){
 	
 	document.getElementById('findadress').onclick = function() { 
 		var adress = document.getElementById("adress").value;
+		document.getElementById("adress").value = "";
 		var geocoder = new YMaps.Geocoder(adress);
 		
 		YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
